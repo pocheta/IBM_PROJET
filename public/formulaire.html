@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon formulaire</title>
+
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="dist/tailwind.css">
+    <script type="text/javascript" src="js/formulaire.js"></script>
+</head>
+<body>
+<div id="cookie" class="w-full h-32 bg-red-600 flex flex-row items-center justify-between">
+<div class="ml-16 text-3xl text-gray-900"><h1> Voulez vous acceptez les cookies ? </h1></div>
+    <div class="mr-16">
+        <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 transition duration-300 ease-in-out">
+            Oui
+        </button>
+        <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 transition duration-300 ease-in-out"
+                onclick="hideCookie()"> Non
+        </button>
+    </div>
+</div>
+
+<div class="container mx-auto">
+
+
+    <div>
+        <h2>Nom : </h2>
+    </div>
+
+    <div>
+        <h2>Prénom : </h2>
+    </div>
+
+    <div>
+        <h2>Adresse Mail : </h2>
+    </div>
+
+    <div class="hidden">
+        <h2> Date de naissance : </h2>
+        <h4 id="birthdate">01/01/1990</h4>
+        <div class="dice-wrapper">
+            <img src="assets/dice/dice-01.svg" class="dice" id="die-1">
+            <img src="assets/dice/dice-01.svg" class="dice" id="die-2">
+        </div>
+        <h2> Unité : </h2>
+        <div>
+            <select id='select'>
+                <option value="1">Année</option>
+                <option value="2">Mois</option>
+                <option value="3">Jour</option>
+            </select>
+            <button onclick="roll(false)"> Lance et soustrait</button>
+            <button onclick="roll(true)"> Lance et ajoute</button>
+        </div>
+    </div>
+
+    <div>
+        <h2>Mot de passe : </h2>
+    </div>
+
+    <div>
+        <button> Valider</button>
+        <button> Rénitialiser</button>
+    </div>
+
+</div>
+
+</body>
+</html>
