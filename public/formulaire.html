@@ -11,13 +11,14 @@
     <script type="text/javascript" src="js/formulaire.js"></script>
 </head>
 <body>
-<div id="cookie" class="w-full h-32 bg-red-600 flex flex-row items-center justify-between">
+
+<div id="cookie" class="w-full h-40 bg-red-600 flex flex-row items-center justify-between absolute">
 <div class="ml-16 text-3xl text-gray-900"><h1> Voulez vous acceptez les cookies ? </h1></div>
     <div class="mr-16">
-        <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 transition duration-300 ease-in-out">
+        <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 transition duration-300 ease-in-out">
             Oui
         </button>
-        <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 transition duration-300 ease-in-out"
+        <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 transition duration-300 ease-in-out"
                 onclick="hideCookie()"> Non
         </button>
     </div>
@@ -25,45 +26,57 @@
 
 <div class="container mx-auto">
 
-
-    <div>
-        <h2>Nom : </h2>
+    <div class="w-90 flex flex-col items-center mb-8">
+        <h2 class="text-2xl mb-2">Nom : </h2>
+        <input type="text" id="password" value="Enter your firstname" class="text-xl text-center bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg block w-64 p-2.5" placeholder="Enter your firstname" required>
     </div>
 
-    <div>
-        <h2>Prénom : </h2>
+    <div class="w-90 flex flex-col items-center mb-8">
+        <h2 class="text-2xl mb-2">Prénom : </h2>
+        <input type="text" id="password" value="Enter your lastname" class="text-xl text-center bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg block w-64 p-2.5" placeholder="Enter your lastname" required>
     </div>
 
-    <div>
-        <h2>Adresse Mail : </h2>
+    <div class="w-90 flex flex-col items-center mb-8">
+        <h2 class="text-2xl mb-2">Adresse mail : </h2>
+        <input type="text" id="password" value="Enter your email" class="text-xl text-center bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg block w-64 p-2.5" placeholder="Enter your email" required>
     </div>
 
-    <div class="hidden">
-        <h2> Date de naissance : </h2>
-        <h4 id="birthdate">01/01/1990</h4>
-        <div class="dice-wrapper">
-            <img src="assets/dice/dice-01.svg" class="dice" id="die-1">
-            <img src="assets/dice/dice-01.svg" class="dice" id="die-2">
+    <div class="w-90 flex flex-col items-center mb-6">
+        <h2 class="text-2xl mb-2"> Date de naissance : </h2>
+        <input type="text" id="birthdate" value="01/01/1990" class="text-xl text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-64 p-2.5" required readonly>
+        <div class="flex flex-row w-64 justify-center my-4">
+            <img src="assets/dice/dice-01.svg" class="w-16 mr-2" id="die-1">
+            <img src="assets/dice/dice-01.svg" class="w-16 ml-2" id="die-2">
         </div>
-        <h2> Unité : </h2>
-        <div>
-            <select id='select'>
+        
+        <div class="flex items-center justify-center w-64 mb-2">
+            <h2 class="text-xl mr-2"> Unité : </h2>
+            <select id="select" class="ml-2 bg-gray-50 text-xl border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-32 p-2.5">
                 <option value="1">Année</option>
                 <option value="2">Mois</option>
                 <option value="3">Jour</option>
             </select>
-            <button onclick="roll(false)"> Lance et soustrait</button>
-            <button onclick="roll(true)"> Lance et ajoute</button>
+        </div>
+        <div>
+            <button onclick="roll(false)" type="button" class="text-xl text-gray-600 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 my-2">
+                <img class="w-4 h-4 mr-2 -ml-1 text-[#626890]" src="assets/minus.svg" />
+                Lance et soustrait
+              </button>
+              <button onclick="roll(true)" type="button" class="text-xl text-gray-600 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ml-2 my-2">
+                <img class="w-4 h-4 mr-2 -ml-1 text-[#626890]" src="assets/plus.svg" />
+                Lance et ajoute
+              </button>
         </div>
     </div>
 
-    <div>
-        <h2>Mot de passe : </h2>
+    <div class="w-90 flex flex-col items-center mb-8">
+        <h2 class="text-2xl mb-2">Mot de passe : </h2>
+        <input type="text" id="password" value="Enter your password" class="text-xl text-center bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg block w-64 p-2.5" placeholder="Enter your password" required>
     </div>
 
-    <div>
-        <button> Valider</button>
-        <button> Rénitialiser</button>
+    <div class="flex flex-row justify-center">
+        <button type="button" class="text-2xl text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2">Valider</button>
+        <button type="button" class="text-2xl text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center ml-2 mb-2">Rénitialiser</button>
     </div>
 
 </div>

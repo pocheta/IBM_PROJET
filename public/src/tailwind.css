@@ -10,9 +10,6 @@
     background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-/* .image1{
-    animation: moveY 2s infinite;
-} */
 .image2{
     position: absolute;
     top: -110px;
@@ -30,9 +27,27 @@
     z-index: -99;
 }
 
-/* 
+.cookie{
+    animation: moveY 20s normal;
+}
+
 @keyframes moveY {
     0% { transform: translateY(0px)}
-    50% { transform: translateY(25px)}
-    100% { transform: translateY(0px)}
-} */
+    100% { transform: translateY(-200px)}
+}
+
+.shake{
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake{
+    0%{
+        transform: rotate(8deg);
+    }
+    50%{
+        transform: rotate(-8deg);
+    }
+    100%{
+        transform: rotate(8deg);
+    }
+}

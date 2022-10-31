@@ -1,6 +1,5 @@
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: ["public/**/*.{html,js}"],
   theme: {
     fontFamily : {
       poppins : ["Poppins", 'sans-serif']

@@ -43,45 +43,52 @@ function roll(add) {
 }
 
 function year(add, total) {
-    const dateString = (document.getElementById('birthdate').innerHTML).split("/")
+    const dateString = (document.getElementById('birthdate').value).split("/")
     const date = new Date(+dateString[2], dateString[1] - 1, ++dateString[0])
 
     if (add) {
         date.setFullYear(date.getFullYear() + total)
-        document.getElementById('birthdate').innerHTML = date.toLocaleDateString('fr-FR', {timeZone: 'UTC'})
+        document.getElementById('birthdate').value = date.toLocaleDateString('fr-FR', {timeZone: 'UTC'})
     } else {
         date.setFullYear(date.getFullYear() - total)
-        document.getElementById('birthdate').innerHTML = date.toLocaleDateString('fr-FR', {timeZone: 'UTC'})
+        document.getElementById('birthdate').value = date.toLocaleDateString('fr-FR', {timeZone: 'UTC'})
     }
 }
 
 function month(add, total) {
-    const dateString = (document.getElementById('birthdate').innerHTML).split("/")
+    const dateString = (document.getElementById('birthdate').value).split("/")
     const date = new Date(+dateString[2], dateString[1] - 1, ++dateString[0])
 
     if (add) {
         date.setMonth(date.getMonth() + total)
-        document.getElementById('birthdate').innerHTML = date.toLocaleDateString('fr-FR', {timeZone: 'UTC'})
+        document.getElementById('birthdate').value = date.toLocaleDateString('fr-FR', {timeZone: 'UTC'})
     } else {
         date.setMonth(date.getMonth() - total)
-        document.getElementById('birthdate').innerHTML = date.toLocaleDateString('fr-FR', {timeZone: 'UTC'})
+        document.getElementById('birthdate').value = date.toLocaleDateString('fr-FR', {timeZone: 'UTC'})
     }
 }
 
 function day(add, total) {
-    const dateString = (document.getElementById('birthdate').innerHTML).split("/")
+    const dateString = (document.getElementById('birthdate').value).split("/")
     let date;
 
     if (add) {
         date = new Date(+dateString[2], dateString[1] - 1, ++dateString[0] + total);
-        document.getElementById('birthdate').innerHTML = date.toLocaleDateString('fr-FR', {timeZone: 'UTC'})
+        document.getElementById('birthdate').value = date.toLocaleDateString('fr-FR', {timeZone: 'UTC'})
     } else {
         date = new Date(+dateString[2], dateString[1] - 1, ++dateString[0] - total);
-        document.getElementById('birthdate').innerHTML = date.toLocaleDateString('fr-FR', {timeZone: 'UTC'})
+        document.getElementById('birthdate').value = date.toLocaleDateString('fr-FR', {timeZone: 'UTC'})
     }
 
 }
 
 function hideCookie() {
-    document.getElementById('cookie').classList.add("hidden")
+    document.getElementById('cookie').classList.add("cookie")
+
+    setTimeout(function () {
+        document.getElementById('cookie').classList.add("hidden")
+    },
+    19000
+);
+    
 }
