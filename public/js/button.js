@@ -60,6 +60,7 @@ function resetForm() {
     document.getElementById('popup-resetTimer').classList.add('flex')
     document.getElementById('popup-resetTimer').classList.remove('hidden')
 
+    document.getElementById('resetTimer').innerHTML = timer + " sec"
     const id = setInterval(decrementTimer, 1000);
 
     setTimeout(function () {
@@ -72,6 +73,13 @@ function resetForm() {
         document.getElementById('email').value = "Enter your email"
         document.getElementById('birthdate').value = "01/01/1930"
         document.getElementById('password').value = "Enter your password"
+
+        var select = document.getElementById('mailDomain')
+        select.innerHTML = ''
+        var el = document.createElement("option");
+        el.textContent = "domaine.fr";
+        el.value = "domaine.fr";
+        select.appendChild(el);
 
         clearInterval(id)
         timer = 30;
