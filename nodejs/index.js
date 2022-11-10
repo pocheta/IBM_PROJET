@@ -12,6 +12,10 @@ app.get('/formulaire', (req, res) => {
     res.sendFile(__dirname + '/public/formulaire.html');
 })
 
+app.get('/valide', (req, res) => {
+    res.sendFile(__dirname + '/public/valide.html');
+})
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })

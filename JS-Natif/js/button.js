@@ -5,7 +5,7 @@ let y_incr = 1;
 
 let cptClick = 0;
 
-function init() {
+function initButton() {
     cptClick++;
     if (cptClick < 3) {
         validateButton = document.getElementById('validateButton');
@@ -36,8 +36,37 @@ function frame() {
     validateButton.style.left = validateButton.offsetLeft + x_incr + 'px';
 }
 
+var notValideTimer = 5
+
 function validate() {
-    console.log('C OKKKKKKKKKKKKKKKKKKKKKKKKKKKK');
+    var firstname = document.getElementById('firstname').value
+    var lastname = document.getElementById('lastname').value
+    var email = document.getElementById('email').value
+    var mailDomain = document.getElementById('mailDomain').value
+    var birthdate = document.getElementById('birthdate').value
+    var password = document.getElementById('password').value
+
+    if (firstname != '' && firstname != 'Enter your firstname' &&
+        lastname != '' && lastname != 'Enter your lastname' &&
+        email != '' && email != 'Enter your email' &&
+        mailDomain != '' && mailDomain != 'domaine.fr' &&
+        birthdate != '' &&
+        password != '' && password != 'Enter your password') {
+        window.location.href = 'valide.html?firstname=' + firstname + '&lastname=' + lastname + '&email=' + email + '&mailDomain=' + mailDomain + '&birthdate=' + birthdate + '&password=' + password
+    }else{
+        document.getElementById('popup-notValide').classList.remove('hidden')
+        
+        let timerId = setInterval(function(){
+            document.getElementById('notValideTimer').innerHTML = notValideTimer-- + " sec"
+        }, 1000)
+
+        setTimeout(function(){
+            document.getElementById('popup-notValide').classList.add('hidden')
+            notValideTimer = 5
+            document.getElementById('notValideTimer').innerHTML = notValideTimer + " sec"
+            clearInterval(timerId)
+        },6500)
+    }
 }
 
 function reinitialize() {
@@ -52,7 +81,7 @@ function closeModal() {
     document.getElementById('popup-reset').classList.add('hidden')
 }
 
-let timer = 30
+let restTimer = 30
 
 function resetForm() {
     document.getElementById('popup-reset').classList.remove('flex')
@@ -60,7 +89,7 @@ function resetForm() {
     document.getElementById('popup-resetTimer').classList.add('flex')
     document.getElementById('popup-resetTimer').classList.remove('hidden')
 
-    document.getElementById('resetTimer').innerHTML = timer + " sec"
+    document.getElementById('resetTimer').innerHTML = restTimer + " sec"
     const id = setInterval(decrementTimer, 1000);
 
     setTimeout(function () {
@@ -82,12 +111,12 @@ function resetForm() {
         select.appendChild(el);
 
         clearInterval(id)
-        timer = 30;
+        restTimer = 30;
 
     }, 32000)
 
 }
 
 function decrementTimer() {
-    document.getElementById('resetTimer').innerHTML = timer-- + " sec"
+    document.getElementById('resetTimer').innerHTML = restTimer-- + " sec"
 }

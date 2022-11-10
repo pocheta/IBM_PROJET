@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon formulaire</title>
+
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="dist/tailwind.css">
+    <script type="text/javascript" src="js/home.js"></script>
+</head>
+
+<body class="bg-gradient" onload="load()">
+
+    <div class="container mx-auto">
+
+        <section class="flex flex-wrap lg:flex-nowrap justify-center h-screen relative">
+            <div class="my-auto font-poppins text-gray-200 text-center lg:text-left">
+                <h1 class="font-medium text-5xl py-3 text-flicker-in-glow" >Merci pour votre inscription!</h1>
+                <p class="lg:w-5/6 text-4xl underline mt-2 mb-6 text-shadow-pop-top">Récapitulatif :</p>
+
+                <ul class="space-y-1 max-w-md list-inside text-gray-500 whitespace-nowrap">
+                    <li class="flex items-center text-2xl text-white">
+                        <svg class="w-4 h-4 mr-1.5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Nom : <span id="firstname" class="pl-2"> X </span>
+                    </li>
+                    <li class="flex items-center text-2xl text-white">
+                        <svg class="w-4 h-4 mr-1.5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Prénom : <span id="lastname" class="pl-2"> X </span>
+                    </li>
+                    <li class="flex items-center text-2xl text-white">
+                        <svg class="w-4 h-4 mr-1.5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Email : <span id="email" class="pl-2"> X </span>
+                    </li>
+                    <li class="flex items-center text-2xl text-white">
+                        <svg class="w-4 h-4 mr-1.5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Date de naissance : <span id="birthdate" class="pl-2"> X </span>
+                    </li>
+                    <li class="flex items-center text-2xl text-white">
+                        <svg class="w-4 h-4 mr-1.5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Mot de passe : <span id="password" class="pl-2"> X </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="my-auto text-center">
+                <img class="image1" src="./assets/img1.gif" alt="image1">
+                <img class="image2 animate-rotateZ w-3/4 lg:w-2/5" src="./assets/img2.png" alt="image2">
+                <img class="image3 animate-rotateZ w-3/4 lg:w-2/5" src="./assets/img3.png" alt="image3">
+            </div>
+        </section>
+
+    </div>
+
+    <div class="relative">
+        <div class="absolute bottom-2 left-6 text-white"> Antoine POCHET ©
+        </div>
+    </div>
+
+</body>
+
+</html>

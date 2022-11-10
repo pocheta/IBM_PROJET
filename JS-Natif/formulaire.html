@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon formulaire</title>
+
+    <link rel="stylesheet" href="dist/kioskboard-2.3.0.min.css" />
+    <script type="text/javascript" src="js/kioskboard-2.3.0.min.js"></script>
+    <script type="text/javascript" src="js/kioskboard-aio-2.3.0.min.js"></script>
+
+
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="dist/tailwind.css">
+
+    <script type="text/javascript" src="js/home.js"></script>
+    <script type="text/javascript" src="js/cookie.js"></script>
+    <script type="text/javascript" src="js/name.js"></script>
+    <script type="text/javascript" src="js/mail.js"></script>
+    <script type="text/javascript" src="js/birthdate.js"></script>
+    <script type="text/javascript" src="js/password.js"></script>
+    <script type="text/javascript" src="js/button.js"></script>
+
+</head>
+
+<body id="body" style="background-image: url('./assets/background.jpg'); background-size: cover;" onload="rotateBody()">
+
+    <div id="cookie"
+        class="w-full h-40 bg-gradient-to-tr from-red-300 to-red-500 border-b-4 border-red-600 flex flex-row items-center justify-between absolute">
+        <div class="ml-16 text-3xl text-gray-900">
+            <h1 class="font-yugly"> Voulez vous acceptez les cookies ? </h1>
+        </div>
+        <div class="mr-16">
+            <button id="yesCookie"
+                class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 transition duration-300 ease-in-out"
+                onclick="hideCookie(true)"> Oui
+            </button>
+            <button id="noCookie"
+                class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 transition duration-300 ease-in-out"
+                onclick="hideCookie(false)"> Non
+            </button>
+        </div>
+    </div>
+
+    <div id="cookieSure"
+        class="hidden w-full h-40 bg-gradient-to-tr from-red-300 to-red-500 border-b-4 border-red-600 flex flex-row items-center justify-between absolute">
+        <div class="ml-16 text-3xl text-gray-900">
+            <h1 id="textCookieSure"> Voulez vous acceptez les cookies ? </h1>
+        </div>
+        <div class="mr-16">
+            <button id="yesSureCookie"
+                class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 transition duration-300 ease-in-out"
+                onclick="hideSureCookie(true)" disabled="true">
+                Oui
+            </button>
+            <button id="noSureCookie"
+                class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 transition duration-300 ease-in-out"
+                onclick="hideSureCookie(false)" disabled="true"> Non
+            </button>
+        </div>
+    </div>
+
+    <div class="container mx-auto">
+
+        <div class="w-90 flex flex-col items-center mb-8 pt-8">
+            <h2 class="text-2xl mb-2">Prénom : </h2>
+            <input id="firstname" onload="keyboard()"
+                class="js-kioskboard-input text-xl text-center bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg block w-64 p-2.5"
+                placeholder="Enter your firstname" data-kioskboard-type="keyboard" data-kioskboard-placement="bottom"
+                data-kioskboard-specialcharacters="false" placeholder="Your Name" />
+        </div>
+
+        <div class="w-90 flex flex-col items-center mb-8">
+            <h2 class="text-2xl mb-2">Nom : </h2>
+            <input onchange="reverseLastName()" type="text" id="lastname" value="Enter your lastname"
+                class="text-xl text-center bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg block w-64 p-2.5"
+                placeholder="Enter your lastname" required>
+        </div>
+
+        <div class="w-90 flex flex-col items-center mb-8">
+            <h2 class="text-2xl mb-2">Adresse mail : </h2>
+            <div class="flex flex-row">
+                <input type="text" id="email" value="Enter your email"
+                    class="text-xl text-center bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg block w-64 p-2.5"
+                    placeholder="Enter your email" required>
+                <h2 class="text-4xl">@</h2>
+                <select onmouseover="initMail()" id="mailDomain"
+                    class="text-xl text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-64 p-2.5">
+                    <option>domaine.fr</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="w-90 flex flex-col items-center mb-6">
+            <h2 class="text-2xl mb-2"> Date de naissance : </h2>
+            <input type="text" id="birthdate" value="01/01/1930"
+                class="text-xl text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-64 p-2.5"
+                required readonly>
+            <div class="flex flex-row w-64 justify-center my-4">
+                <img src="assets/dice/dice-01.svg" class="w-16 mr-2" id="die-1">
+                <img src="assets/dice/dice-01.svg" class="w-16 ml-2" id="die-2">
+            </div>
+
+            <div class="flex items-center justify-center w-64 mb-2">
+                <h2 class="text-xl mr-2"> Unité : </h2>
+                <select id="select"
+                    class="ml-2 bg-gray-50 text-xl border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-32 p-2.5">
+                    <option value="1">Année</option>
+                    <option value="2">Mois</option>
+                    <option value="3">Jour</option>
+                </select>
+            </div>
+            <div>
+                <button onclick="roll(false)" type="button"
+                    class="border border-gray-300 text-xl text-gray-600 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 my-2">
+                    <img class="w-4 h-4 mr-2 -ml-1 text-[#626890]" src="assets/minus.svg" />
+                    Lance et soustrait
+                </button>
+                <button onclick="roll(true)" type="button"
+                    class="border border-gray-300 text-xl text-gray-600 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ml-2 my-2">
+                    <img class="w-4 h-4 mr-2 -ml-1 text-[#626890]" src="assets/plus.svg" />
+                    Lance et ajoute
+                </button>
+            </div>
+        </div>
+
+        <div class="w-90 flex flex-col items-center mb-8">
+            <h2 class="text-2xl mb-2">Mot de passe : </h2>
+            <input type="password" id="password" value="Enter your password" onchange="rules()"
+                class="text-xl text-center bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg block w-64 p-2.5"
+                placeholder="Enter your password" required>
+        </div>
+
+        <div class="flex flex-row justify-center">
+            <div id="validateButton">
+                <button type="button" onmouseover="initButton()" onclick="validate()"
+                    class="text-2xl text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2">Valider</button>
+            </div>
+            <button type="button" onclick="reinitialize()"
+                class="text-2xl text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center ml-2 mb-2">Réinitialiser</button>
+        </div>
+
+    </div>
+
+    <div id="popup-reset" tabindex="-1"
+        class="hidden h-screen overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full ">
+        <div class="m-auto relative p-4 w-full max-w-xl h-full md:h-auto">
+            <div class="relative bg-white rounded-lg shadow p-8 border-red-600 border-8 jello-horizontal">
+                <button onclick="closeModal()" type="button"
+                    class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+                    data-modal-toggle="popup-modal">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="p-6 text-center">
+                    <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="mb-5 text-lg font-normal text-gray-500">Etes-vous vraiment sur de réinitialiser le
+                        formulaire ?</h3>
+                    <button onclick="resetForm()" type="button"
+                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                        Oui, je suis sur
+                    </button>
+                    <button onclick="closeModal()" type="button"
+                        class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Non,
+                        pas vraiment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-resetTimer" tabindex="-1"
+        class="hidden h-screen overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full ">
+        <div class="m-auto relative p-4 w-full max-w-xl h-full md:h-auto">
+            <div class="relative bg-white rounded-lg shadow p-8 border-red-600 border-8 pulsate-fwd">
+                <div class="p-6 text-center">
+                    <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="mb-5 text-lg font-normal text-gray-500">Le formulaire est entrain de se réinitialiser...
+                    </h3>
+                    <h2 id="resetTimer" class="mb-5 text-md font-normal text-red-500"> 30 sec</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="popup-password" tabindex="-1"
+        class="hidden h-screen overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full ">
+        <div class="m-auto relative p-4 w-full max-w-xl h-full md:h-auto">
+            <div class="relative bg-white rounded-lg shadow p-8 border-red-600 border-2">
+                <div class="py-4 px-6 rounded-t border-b dark:border-gray-600">
+                    <h3 class="text-base font-semibold text-gray-900 lg:text-xl dark:text-white">
+                        Mot de passe non conforme...
+                    </h3>
+                </div>
+                <div class="p-6">
+                    <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Merci de respecter les règles
+                        suivantes : </p>
+                    <ul class="my-4 space-y-3">
+                        <li>
+                            <div id="rules0"
+                                class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                <span class="flex-1 ml-3">Doit contenir au moins 3 majuscules</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="rules1"
+                                class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                <span class="flex-1 ml-3">Doit contenir au maximum 4 majuscules</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="rules2"
+                                class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                <span class="flex-1 ml-3">Doit contenir au moins 3 minuscules</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="rules3"
+                                class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                <span class="flex-1 ml-3">Doit contenir au maximum 3 minuscules</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="rules4"
+                                class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                <span class="flex-1 ml-3">Doit contenir au moins 9 chiffres</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="rules5"
+                                class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                <span class="flex-1 ml-3">Doit contenir au moins un '*' et un
+                                    '.'</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="rules6"
+                                class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                <span class="flex-1 ml-3">Doit contenir au maximum un '.'</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="rules7"
+                                class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                <span class="flex-1 ml-3">Doit contenir le mot 'ibm'</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="rules8"
+                                class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                <span class="flex-1 ml-3">Doit contenir au moins une '*' derrière une
+                                    majuscule</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="rules9"
+                                class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                <span class="flex-1 ml-3">Doit être de longeur (((19 / 5 / 8 * 20) - 12 + 1) * 2 + 22))
+                                    maximum</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="rules10"
+                                class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                <span class="flex-1 ml-3">Doit être de longeur ((18 * 15 / 8) + 123 / 12 - 26))
+                                    minimum</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div>
+                        <div id="passwordTimer"
+                            class="inline-flex items-center text-xs font-normal text-gray-500 hover:underline dark:text-gray-400">
+
+                            Cette fenetre va se fermer dans 5 sec</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-notValide" tabindex="-1"
+        class="hidden h-screen overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full ">
+        <div class="m-auto relative p-4 w-full max-w-xl h-full md:h-auto pulsate-fwd">
+            <div class="relative bg-white rounded-lg shadow p-8 border-red-600 border-8 pulsate-fwd">
+                <div class="p-6 text-center">
+                    <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="mb-5 text-lg font-normal text-gray-500">Le formulaire n'est correctement remplis...
+                    </h3>
+                    <h2 id="notValideTimer" class="mb-5 text-md font-normal text-red-500"> 5 sec</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="relative">
+        <div class="absolute bottom-1 left-6 text-black"> Antoine POCHET ©
+        </div>
+    </div>
+
+</body>
+
+</html>
